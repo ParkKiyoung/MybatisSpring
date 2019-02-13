@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+ <!DOCTYPE mapper   
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+     
+     
+     <!-- 가능하면 경로명 전부 적어야함 -->
+ <mapper namespace="org.maddress.config.MyMember">
+ <insert id = "insertMember" parameterType="org.member.mybatis.vo.MemberVO">
+ insert into springMember(id,name,pass,addr,memo,reg_date)
+ values(#{id},#{name},#{pass},#{addr},#{memo},sysdate)
+ </insert>
+ 
+ <select id = "selectList" resultType="MemberVO">
+ select * from springMember
+ </select>
+ 
+ <select id="selectMember" parameterType="String" resultType="MemberVO">
+ select * from springMember where id = #{id}
+ </select>
+ 
+ <update id="updateMember" parameterType="MemberVO">
+ update springMember set pass=#{pass},name=#{name},addr=#{addr},memo=#{memo} where id = #{id}
+ </update>
+ <delete id="deleteMember" parameterType="String">
+ delete springMember where id = #{id}
+ </delete>
+ 
+ 
+ </mapper>
